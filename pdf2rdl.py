@@ -14,7 +14,7 @@ ignore_pattern = r'.*\.\.\.\.\.\.\.\.\.\.\.\.\.\.\.\.*'
 
 registers = {}
 # Open input and output files
-with open('../pdf/Audio_new.txt', 'r') as input_file:
+with open('../pdf/<name>.txt', 'r') as input_file:
     # Initialize variables
     reg_name = None
     reg_offset = None
@@ -112,16 +112,12 @@ with open('../pdf/Audio_new.txt', 'r') as input_file:
                 }
             k = 1
         elif tag == 1:
-            # print(field_desc)
-            # print("reg:", reg_name)
-            # print("field:", field_name)
-            # print("line: ", line)
             if field_name:
                 registers[reg_name]['fields'][field_name]['description'] += line
             field_desc += line
 
 # Output the extracted register information in the desired format
-with open('../data/Audio.rdl', 'w') as f:
+with open('../data/<name>.rdl', 'w') as f:
     for reg_name, reg_info in registers.items():
         f.write(f'register :{reg_name} do\n')
         f.write(f'\taccess \n')
